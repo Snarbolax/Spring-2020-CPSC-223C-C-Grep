@@ -1,6 +1,6 @@
-#include <dirent.h>
 #include <stdlib.h>
 #include <string.h>
+#include <dirent.h>
 
 #define	BLKSIZE	4096 /* make BLKSIZE and LBSIZE 512 for smaller machines */
 #define	LBSIZE	256
@@ -27,18 +27,21 @@ int cclass(char *set, int c, int af);
 int execute(unsigned int *addr);
 int getchr(void);
 int getfile(void);
+int init(char* file);
+int filecheck(int argc, int state, int iterator, const char* argv, char* temp, char* temp2, FILE* yFILE);
+int begin(char *string1, char *string2);
+int end(char *string1, char *string2);
+int star(char* lp, char* ep, char* curlp);
 
 char *getline(unsigned int tl);
 
 void compile(int eof);
 void error(char *s);
-int init(int argc, const char* argv);
-
-void putchr(int ac);
-
-void puts(char *sp);
-
-int filecheck(int argc, int state, int iterator, const char* argv, char* temp, char* temp2, FILE* yFILE);
 void cerror(void);
 void defchar(char* ep, int c);
-int star(char* lp, char* ep, char* curlp);
+
+void find_lines(void);
+void open_f(char* file);
+
+void putchr(int ac);
+void puts(char *sp);
